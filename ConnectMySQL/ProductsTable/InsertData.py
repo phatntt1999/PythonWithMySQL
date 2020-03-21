@@ -1,13 +1,8 @@
-import mysql.connector
+from Connectdatabase import connectDB
 
-mydb = mysql.connector.connect(
-    host="127.0.0.1",
-    user="root",
-    password="Quenmenik12",
-    database="MyDatabase"
-)
+mysql = connectDB();
 
-mycursor = mydb.cursor();
+mycursor = mysql.cursor();
 sql = "INSERT INTO Products (ProductID, ProductName, ProductStatus, Amount, BarCodeID) VALUES (%s, %s, %s, %s, %s)"
 val = [
     ("IP8M001", "Iphone 8Plus", "Light scratches.", "20", "147852369"),
@@ -20,7 +15,7 @@ val = [
 ]
 
 mycursor.executemany(sql, val)
-mydb.commit()
+mysql.commit()
 
 print(mycursor.rowcount, "was inserted.")
 print("The last ID inserted is: ", mycursor.lastrowid)

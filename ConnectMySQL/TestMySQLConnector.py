@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
     database="MyDatabase"
 )
 
-mycursor = mydb.cursor();
+mycursor = mydb.cursor()
 sql = "INSERT INTO Product (id, productName, productStatus) VALUES (%s, %s, %s)"
 val = [
     ("IP11470", "Iphone X", "Full Pressure & Light scratches."),

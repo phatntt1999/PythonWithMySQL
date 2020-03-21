@@ -1,17 +1,12 @@
-import mysql.connector
+from Connectdatabase import connectDB
 
-mydb = mysql.connector.connect(
-    host="127.0.0.1",
-    user="root",
-    password="Quenmenik12",
-    database="MyDatabase"
-)
+mysql = connectDB();
 
-mycursor = mydb.cursor();
+mycursor = mysql.cursor();
 
 mycursor.execute("SELECT * FROM Products")
  
 myresult=mycursor.fetchall();
- 
+
 for x in myresult:
     print(x)

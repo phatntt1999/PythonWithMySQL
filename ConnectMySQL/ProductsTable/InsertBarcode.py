@@ -3,8 +3,13 @@ from Connectdatabase import connectDB
 mysql = connectDB();
 
 mycursor = mysql.cursor();
-sql = "INSERT INTO BarCodes (BarCodeID) VALUES ('QR04')"
-mycursor.execute(sql)
+sql = "UPDATE Products SET BarCodeID = %s where ProductID = %s"
+val = [
+    ("QR05", "IP8M017"),
+    ("QR04", "IP8M015")
+]
+
+mycursor.executemany(sql, val)
 mysql.commit()
 
 print(mycursor.rowcount, "was inserted.")

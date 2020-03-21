@@ -1,12 +1,8 @@
-import mysql.connector
+from Connectdatabase import connectDB
 
-mydb = mysql.connector.connect(
-    host="127.0.0.1",
-    user="root",
-    password="Quenmenik12",
-    database="MyDatabase"
-)
+mysql = connectDB();
 
-mycursor = mydb.cursor();
-
-mycursor.execute("CREATE TABLE BarCode (BarCodeID VARCHAR(20) PRIMARY KEY UNIQUE)")
+mycursor = mysql.cursor();
+# mycursor.execute("CREATE TABLE BarCode (BarCodeID VARCHAR(20) PRIMARY KEY UNIQUE)")
+mycursor.execute("CREATE TABLE BarCodes (ID INT NOT NULL AUTO_INCREMENT, \
+BarCodeID VARCHAR(20), PRIMARY KEY (ID), FOREIGN KEY (BarCodeID) REFERENCES Products(BarCodeID)) ENGINE = InnoDB DEFAULT CHARSET = utf8;")
